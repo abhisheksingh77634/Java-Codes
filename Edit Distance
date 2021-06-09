@@ -1,0 +1,31 @@
+class Solution {
+    public int minDistance(String word1, String word2) {
+        int x=word1.length()+1;
+        int y=word2.length()+1;
+        int[][] ar=new int[x][y];
+        for(int i=0;i<x;i++)
+        {
+            for(int j=0;j<y;j++)
+            {
+                ar[0][j]=j;
+                ar[i][0]=i;
+            }
+        }
+        for(int k=1;k<x;k++)
+        {
+            for(int l=1;l<y;l++)
+            {
+                
+               int a=Math.min(ar[k-1][l-1],Math.min(ar[k-1][l],ar[k][l-1]));
+               ar[k][l]=a+1;
+              if(word1.charAt(k-1)==word2.charAt(l-1))
+              {
+                  
+                      ar[k][l]=ar[k-1][l-1];
+              }
+            
+            }
+             }  
+        return ar[x-1][y-1];
+    }
+}
