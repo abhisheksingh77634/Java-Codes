@@ -1,0 +1,62 @@
+class Solution {
+    public List<String> letterCombinations(String digits) {
+       HashMap <Character,List<String>> map = new HashMap<>();
+        map.put('2', Arrays.asList("a","b","c"));
+        map.put('3', Arrays.asList("d","e","f"));
+        map.put('4', Arrays.asList("g","h","i"));
+        map.put('5', Arrays.asList("j","k","l"));
+        map.put('6', Arrays.asList("m","n","o"));
+        map.put('7', Arrays.asList("p","q","r","s"));
+        map.put('8', Arrays.asList("t","u","v"));
+        map.put('9', Arrays.asList("w","x","y","z"));
+        ArrayList<String> result=new ArrayList<>();
+        switch(digits.length())
+        {
+            case 0:
+                return result;
+            case 1:
+                return map.get(digits.charAt(0));
+            case 2:
+                for(String fi:map.get(digits.charAt(0)))
+                {
+                    for(String se:map.get(digits.charAt(1)))
+                    {
+                        result.add(fi+se);
+                    }
+                }
+                break;
+            case 3:
+               for(String fi:map.get(digits.charAt(0)))
+               {
+                  for(String se:map.get(digits.charAt(1)))
+                  {
+                     for(String th:map.get(digits.charAt(2)))
+                     {
+                         result.add(fi+se+th);
+                     }
+                  }
+               }
+                break;
+                
+            case 4:
+                  for(String fi:map.get(digits.charAt(0)))
+                  {
+                  for(String se:map.get(digits.charAt(1)))
+                  {
+                     for(String th:map.get(digits.charAt(2)))
+                     {
+                          for(String fo:map.get(digits.charAt(3)))
+                          {
+                              result.add(fi+se+th+fo);
+                          }
+                     }
+                       }
+                  }
+                break;
+        }
+        return result;
+    }
+
+        }
+                
+        
